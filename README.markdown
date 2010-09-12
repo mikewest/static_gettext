@@ -181,3 +181,10 @@ Notes
     see the [Makefile][make] in that directory.
 
 [make]: http://github.com/mikewest/static_gettext/blob/master/example/Makefile
+
+License
+-------
+
+[BSD licensed][license]
+
+[license]: http://github.com/mikewest/static_gettext/blob/master/LICENSE.markdown

@@ -17,7 +17,7 @@ class LocalizerGettextException( BaseException ):
 class Localizer( object ):
     GETTEXT = 0
     PUTTEXT = 1
-    TEMPLATE_EXTS   = [ '.html', '.txt', '.markdown' ]
+    TEMPLATE_EXTS   = [ '.html', '.js', '.css', '.xml', '.txt', '.markdown' ]
       
     ESCAPE_RE       = re.compile( r'(\')' )
     BLANKOUT_RE     = re.compile( r'\S' )
@@ -113,7 +113,7 @@ class Localizer( object ):
         for root, dirs, files in os.walk( self.inputbase ):
             for name in files:
                 basename, extension = os.path.splitext( name )
-        if extension in Localizer.TEMPLATE_EXTS:
+                if extension in Localizer.TEMPLATE_EXTS:
                     self.xgettext( os.path.join( root, name ), locale )
         self.xgettext_postprocessing( locale )
 
