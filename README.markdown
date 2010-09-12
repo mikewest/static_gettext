@@ -141,7 +141,9 @@ translation.  That's as straightforward as you'd expect:
     static_gettext.py --compile --input ./example/src --locale ./example/locale --languages en_US,de_DE
 
 That generates binary `.mo` files for both `en_US` and `de_DE`, which can be used
-to generate translated versions of the file (see [`./example/build/en_US/index.html`][example_build_en] and [`./example/build/de_DE/index.html`][example_build_de]
+to generate translated versions of the file (see
+[`./example/build/en_US/index.html`][example_build_en] and
+[`./example/build/de_DE/index.html`][example_build_de])
 
     static_gettext.py --render --input ./example/src --locale ./example/locale --output ./example/build --languages en_US,de_DE
 
@@ -155,16 +157,6 @@ In a nutshell:
     static_gettext.py --input ./path/to/input/root --locale ./path/to/locale/root --languages LANG1,LANG2,... --compile
     static_gettext.py --input ./path/to/input/root --locale ./path/to/locale/root --output ./path/to/build/root --languages LANG1,LANG2,... --render
 
-The defaults are sensible, so you can leave off the `input`, `locale`, and
-`output` arguments if you run the script from the root of a project 
-laid out as follows:
-
-    - project root
-      - src
-      - locale
-      - build
-
-The `example` directory in this project is, unsurprisingly, just such an example.
 
 Notes
 -----
@@ -175,3 +167,17 @@ Notes
     you'll end up with multiple copies of images.  So far, I see this as an
     acceptable trade-off...
 
+*   The defaults are sensible, so, if you run the script from the root of a project 
+    laid out as follows, you can leave off the script's `input`, `locale`, and
+    `output` arguments:
+
+        - project root
+          - src
+          - locale
+          - build
+
+    Running `static_gettext.py --language en_US,de_DE` would be enough.  The `example`
+    directory in this project is, unsurprisingly, just such an example.  For extra details,
+    see the [Makefile][make] in that directory.
+
+[make]: http://github.com/mikewest/static_gettext/blob/master/example/Makefile
