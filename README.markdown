@@ -30,6 +30,8 @@ one copy of a set of documents for each language available.  From
 so on, enabling (among other things)  multi-language static websites.
 
 
+[gettext]: http://www.gnu.org/software/gettext/
+
 Usage
 -----
 
@@ -58,7 +60,7 @@ Let's take the following HTML document as an example:
     </html>
 
 Three strings would need translation if I wanted to render this page in German,
-so let's demarcate them as translatable:
+so let's demarcate them as translatable (see [`./example/src/index.html`][example_index]):
 
     <!doctype html>
     <html lang="{% blocktrans %}en{% endblocktrans %}">>
@@ -70,12 +72,14 @@ so let's demarcate them as translatable:
       </body>
     </html>
 
+[example_index]: http://github.com/mikewest/static_gettext/blob/master/example/src/index.html
+
 With those markers in place, I can generate message files:
 
     static_gettext.py --input ./example/src --locale ./example/locale --languages en_US,de_DE
 
-This command generates `./path/to/locale/root/en_US/LC_MESSAGES/messages.po`
-and `./path/to/locale/root/en_US/LC_MESSAGES/messages.po`, which both look
+This command generates [`./example/locale/en_US/LC_MESSAGES/messages.po`][example_po_en]
+and [`./example/locale/de_DE/LC_MESSAGES/messages.po`][example_po_de], which both look
 like:
 
     # SOME DESCRIPTIVE TITLE.
@@ -109,6 +113,9 @@ like:
     msgid "This is a document!"
     msgstr ""
 
+[example_po_de]: http://github.com/mikewest/static_gettext/blob/master/example/locale/de_DE/LC_MESSAGES/messages.po
+[example_po_en]: http://github.com/mikewest/static_gettext/blob/master/example/locale/en_US/LC_MESSAGES/messages.po
+
 You should edit the header information of each `.po` file to reflect who's
 actually responsible for each, then hand the file to that person for
 translation.  That's as straightforward as you'd expect:
@@ -134,9 +141,12 @@ translation.  That's as straightforward as you'd expect:
     static_gettext.py --compile --input ./example/src --locale ./example/locale --languages en_US,de_DE
 
 That generates binary `.mo` files for both `en_US` and `de_DE`, which can be used
-to generate translated versions of the file:
+to generate translated versions of the file (see [`./example/build/en_US/index.html`][example_build_en] and [`./example/build/de_DE/index.html`][example_build_de]
 
     static_gettext.py --render --input ./example/src --locale ./example/locale --output ./example/build --languages en_US,de_DE
+
+[example_build_de]: http://github.com/mikewest/static_gettext/blob/master/example/build/de_DE/index.html
+[example_build_en]: http://github.com/mikewest/static_gettext/blob/master/example/build/en_US/index.html
 
 In a nutshell:
 
@@ -154,7 +164,7 @@ laid out as follows:
       - locale
       - build
 
-The `example` directory in this project is just such an example.
+The `example` directory in this project is, unsurprisingly, just such an example.
 
 Notes
 -----
