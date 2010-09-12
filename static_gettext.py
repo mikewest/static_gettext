@@ -51,7 +51,7 @@ class Localizer( object ):
 
         potfile = self.potpath( locale )
 
-        msgs, errors = _popen( Localizer.XGETTEXT_CMD, src )
+        msgs, errors = _popen( Localizer.XGETTEXT_CMD, src.encode( 'utf-8' ) )
         msgs = re.sub( r'#: standard input:(\d+)', r'#: %s:\1' % file, msgs )
         if os.path.exists( potfile ):
             msgs = '\n'.join( dropwhile( len, msgs.split( '\n' ) ) )
