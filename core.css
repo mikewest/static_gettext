@@ -33,6 +33,20 @@ h2 {
   margin: 1em 0;
 }
 
+p {
+  margin: 1em 0;
+}
+
+ol,ul {
+    padding-left:   20px;
+}
+    ol li {
+        list-style: decimal outside;
+    }
+    ul li {
+        list-style: disc outside;
+    }
+
 a {
   color:  #4183C4;
 }
@@ -46,7 +60,8 @@ a {
   padding:  1em 5px;
 }
   .actions li {
-    float:  left;
+    list-style: none;
+    float:      left;
   }
     .actions li:last-child {
       float:  right;
@@ -80,4 +95,6 @@ pre {
   border-width: 1px 0;
   margin:       1em -1em;
   padding:      1em;
+  overflow-x:   auto;
+  overflow-y:   hidden;
 }
