@@ -1,6 +1,6 @@
 ---
-title:  `static_gettext`: Localization for Static Documents
-layout: base
+title:  "`static_gettext`: Localization for Static Documents"
+layout: default
 ---
 `static_gettext`<span class="offscreen">: </span>Localization for Static Documents
 ==================================================================================
@@ -23,7 +23,7 @@ Workflow
 
 1.  Text in an set of documents and templates is marked for future
     translation by wrapping translatable strings of text in 
-    `{% blocktrans %}...{% endblocktrans %}` tags.
+    `{{ '{' }}%blocktrans %}...{{ '{' }}%endblocktrans %}` tags.
 
 2.  These translatable strings are extracted from the source documents
     into _message files_ in a standard format.  These files contain
@@ -46,7 +46,7 @@ The first step is to mark up the documents you'd like to translate.
 `static_gettext.py` supports the following markup formats out of the
 box:
 
-*   `{% blocktrans %}TRANSLATABLE STRING{% endblocktrans %}`
+*   `{{ '{' }}%blocktrans %}TRANSLATABLE STRING{{ '{' }}%endblocktrans %}`
 *   `<blocktrans>TRANSLATABLE STRING</blocktrans>`
 *   `<!-- blocktrans -->TRANSLATABLE STRING<!-- /blocktrans -->`
 *   `/* blocktrans */TRANSLATABLE STRING/* /blocktrans */`
@@ -70,12 +70,12 @@ Three strings would need translation if I wanted to render this page in German,
 so let's demarcate them as translatable:
 
     <!doctype html>
-    <html lang="{% blocktrans %}en{% endblocktrans %}">>
+    <html lang="{{ '{' }}%blocktrans %}en{{ '{' }}%endblocktrans %}">>
       <head>
-        <title>{% blocktrans %}Hello, world!{% endblocktrans %}</title>
+        <title>{{ '{' }}%blocktrans %}Hello, world!{{ '{' }}%endblocktrans %}</title>
       </head>
       <body>
-        <p>{% blocktrans %}This is a document!{% endblocktrans %}</p>
+        <p>{{ '{' }}%blocktrans %}This is a document!{{ '{' }}%endblocktrans %}</p>
       </body>
     </html>
 
