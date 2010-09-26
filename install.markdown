@@ -28,4 +28,15 @@ It's hardly worth the name "installation", but you'll need to grab the
 your computer.  The easiest mechanism is simply to [download the current
 version][tarball], extract it, and move it into your project directory.
 
+If you like living on the edge, you can grab the latest version directly
+via something like:
+
+    curl -O http://github.com/mikewest/static_gettext/raw/master/static_gettext.py
+
+Or clone the whole repository:
+
+git clone git://github.com/mikewest/static_gettext.git
+
+Enjoy!
+
 [tarball]: http://github.com/mikewest/static_gettext/tarball/v0.9
