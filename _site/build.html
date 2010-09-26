@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="./reset-fonts.css">
+    <link rel="stylesheet" type="text/css" href="./core.css">
+  </head>
+  <body >
+    <h1><a href="/" rel="home"><code>static_gettext</code></a><span class="offscreen">: </span>Localization for Static Documents</h1>
+    
+    <h2>Generate localizations after translation</h2>
+
+<p>After <a href="extraction.html">generating and translating message files</a>, use
+<code>static_gettext</code> to generate localizations by running the following
+command from the project root:</p>
+
+<pre><code>static_gettext --languages LANG_1,LANG_2,... --build
+</code></pre>
+
+<p>That generates binary <code>*.mo</code> versions of the <code>*.po</code> message files,
+and then uses those compiled files to quickly run through all the
+files in your <code>src</code> directory to generate translations in the target
+languages, which will be placed in the <code>build/[TARGET]/</code> directory.</p>
+
+<p>Two things are important to note:</p>
+
+<ol>
+<li><p>By default, only files with <code>.html</code>, <code>.js</code>, <code>.css</code>, <code>.txt</code>, <code>.xml</code> and
+<code>.markdown</code> extensions  are processed for translation.  If your
+source documents include translatable plaintext files with other
+extensions, you can specify those via a <code>--extensions</code> flag.</p></li>
+<li><p>Files that don't match the list of valid plaintext extensions are
+copied to the build directory.  This means that you'll end up with
+multiple copies of images, binaries, etc.  So far, I see this as an
+acceptable trade-off, but I'm considering symlinks for the future.</p></li>
+</ol>
+
+
+    
+    <ul class="usage" role="navigation">
+      <li><a href="./install.html">Installation</a></li>
+      <li><a href="./markup.html">Marking translatable strings</a></li>
+      <li><a href="./extraction.html">Message file generation</a></li>
+      <li><a href="./build.html">Generating target-language localizations</a></li>
+      <li><a href="./cli.html">Command line usage</a></li>
+    </ul>
+    <small>&copy;2010 <a href="http://mikewest.org/">Mike West</a>: Project source is <a href="http://github.com/mikewest/static_gettext/blob/master/LICENSE.markdown" rel="license">BSD licensed</a>, and <a href="http://github.com/mikewest/static_gettext">available on GitHub</a></small>
+  </body>
+</html>

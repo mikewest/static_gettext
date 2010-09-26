@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="./reset-fonts.css">
+    <link rel="stylesheet" type="text/css" href="./core.css">
+  </head>
+  <body >
+    <h1><a href="/" rel="home"><code>static_gettext</code></a><span class="offscreen">: </span>Localization for Static Documents</h1>
+    
+    <h2>Marking translatable strings</h2>
+
+<p>In order to localize a document, you'll need to tell <code>static_gettext</code>
+which portions of the document ought be translated into target languages.</p>
+
+<p>Let's take the following HTML document as an example:</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Hello, world!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;This is a document!&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>Three strings would need translation if I wanted to render this page in German,
+so let's demarcate them as translatable by wrapping them in <code>blocktrans</code> tags.</p>
+
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="{% blocktrans %}en{% endblocktrans %}"&gt;&gt;
+  &lt;head&gt;
+    &lt;title&gt;{% blocktrans %}Hello, world!{% endblocktrans %}&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p&gt;{% blocktrans %}This is a document!{% endblocktrans %}&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p>That's it.  There's not much more to it than that: <code>static_gettext</code> can now parse
+the document, extract the marked strings, and <a href="extraction.html">generate message files</a>.</p>
+
+<p>I'd suggest sticking with the <code>{% blocktrans %}TRANSLATABLE STRING{% endblocktrans %}</code>
+format, as it makes "upgrating" your static documents to a dynamic system
+like Django trivial.  If, however, your needs dictate a different format,
+the following are supported out of the box.  You can even mix and match
+them, if you're willing to confuse yourself a bit:</p>
+
+<ul>
+<li><code>{% blocktrans %}TRANSLATABLE STRING{% endblocktrans %}</code></li>
+<li><code>&lt;blocktrans&gt;TRANSLATABLE STRING&lt;/blocktrans&gt;</code></li>
+<li><code>&lt;!-- blocktrans --&gt;TRANSLATABLE STRING&lt;!-- /blocktrans --&gt;</code></li>
+<li><code>/* blocktrans */TRANSLATABLE STRING/* /blocktrans */</code></li>
+</ul>
+
+
+    
+    <ul class="usage" role="navigation">
+      <li><a href="./install.html">Installation</a></li>
+      <li><a href="./markup.html">Marking translatable strings</a></li>
+      <li><a href="./extraction.html">Message file generation</a></li>
+      <li><a href="./build.html">Generating target-language localizations</a></li>
+      <li><a href="./cli.html">Command line usage</a></li>
+    </ul>
+    <small>&copy;2010 <a href="http://mikewest.org/">Mike West</a>: Project source is <a href="http://github.com/mikewest/static_gettext/blob/master/LICENSE.markdown" rel="license">BSD licensed</a>, and <a href="http://github.com/mikewest/static_gettext">available on GitHub</a></small>
+  </body>
+</html>

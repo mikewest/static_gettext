@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" type="text/css" href="./reset-fonts.css">
+    <link rel="stylesheet" type="text/css" href="./core.css">
+  </head>
+  <body class="homepage">
+    <h1><a href="/" rel="home"><code>static_gettext</code></a><span class="offscreen">: </span>Localization for Static Documents</h1>
+    
+    <ul class="actions">
+  <li><a href="http://github.com/mikewest/static_gettext/tarball/v0.9" class="cta">Download current version (v0.9)</a></li> 
+  <li><a href="http://github.com/mikewest/static_gettext" class="cta">Source code on GitHub</a></li> 
+</ul>
+
+
+<p><img src="workflow.png" width="565" height="380" alt="static_gettext in a nutshell"></p>
+
+<p><code>static_gettext</code> is an internationalization framework for static, plaintext
+documents and templates.  It's geared towards straightforward translation
+of static websites, but can be easily used for any set of files you'd like
+to translate as a group.</p>
+
+<p>Implemented as a thin wrapper around the GNU <a href="http://www.gnu.org/software/gettext/">gettext</a> project,
+<code>static_gettext</code> produces standard <em>message files</em> that any translator can
+easily work with.  After translation, these files can be used to generate
+localizations for your world-wide audience.</p>
+
+<h2>Quickstart</h2>
+
+<p>After <a href="./install.html">installing the script</a>, getting up and running is trivial.
+Let's take a quick look at the <a href="http://github.com/mikewest/static_gettext/tree/master/example/">example project</a> to get our bearings:</p>
+
+<ul>
+<li><p><strong><a href="markup.html">Markup</a></strong>: Documents to be localized are placed into the project's <code>src</code>
+directory, and marked up for future translation by wrapping strings of
+translatable text in <code>{% blocktrans %}...{% endblocktrans %}</code>
+tags.</p></li>
+<li><p><strong><a href="extraction.html">Extraction</a></strong>: These translatable strings are extracted from the source
+documents into <em>message files</em> in standard <code>gettext</code> format.  A single
+message file containing all translation strings is generated for each
+target language as <code>locale/[TARGET]/LC_MESSAGES/messages.po</code> by running
+the following command from the project root:</p>
+
+<pre><code>static_gettext.py --languages LANG_1,LANG_2,... --make-messages
+</code></pre></li>
+<li><p><strong><a href="build.html">Build</a></strong>: After translation, the <code>*.po</code> files are updated with the
+localized strings and compiled into a <code>*.mo</code> binary format for quick
+lookup.  These binary files are then used to generate localized versions
+of the project as <code>build/[TARGET]/*</code> by running the following from the
+project root:</p>
+
+<pre><code>static_gettext.py --languages LANG_1,LANG_2,... --build
+</code></pre></li>
+</ul>
+
+
+<h2>Detailed Usage</h2>
+
+    
+    <ul class="usage" role="navigation">
+      <li><a href="./install.html">Installation</a></li>
+      <li><a href="./markup.html">Marking translatable strings</a></li>
+      <li><a href="./extraction.html">Message file generation</a></li>
+      <li><a href="./build.html">Generating target-language localizations</a></li>
+      <li><a href="./cli.html">Command line usage</a></li>
+    </ul>
+    <small>&copy;2010 <a href="http://mikewest.org/">Mike West</a>: Project source is <a href="http://github.com/mikewest/static_gettext/blob/master/LICENSE.markdown" rel="license">BSD licensed</a>, and <a href="http://github.com/mikewest/static_gettext">available on GitHub</a></small>
+  </body>
+</html>

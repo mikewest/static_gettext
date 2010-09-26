@@ -1,12 +1,15 @@
 ---
-title:  "`static_gettext`: Localization for Static Documents"
-layout: default
+title:      "`static_gettext`: Localization for Static Documents"
+layout:     default
+bodyclass:  homepage
 ---
 
 <ul class="actions">
   <li><a href="http://github.com/mikewest/static_gettext/tarball/v0.9" class="cta">Download current version (v0.9)</a></li> 
   <li><a href="http://github.com/mikewest/static_gettext" class="cta">Source code on GitHub</a></li> 
 </ul>
+
+<img src="workflow.png" width="565" height="380" alt="static_gettext in a nutshell">
 
 `static_gettext` is an internationalization framework for static, plaintext
 documents and templates.  It's geared towards straightforward translation
@@ -49,13 +52,6 @@ Let's take a quick look at the [example project][example] to get our bearings:
 
 Detailed Usage
 --------------
-
-<ul class="usage" role="navigation">
-  <li><a href="./install.html">Installation</a></li>
-  <li><a href="./markup.html">Marking translatable strings</a></li>
-  <li><a href="./extraction.html">Message file generation</a></li>
-  <li><a href="./build.html">Generating target-language localizations</a></li>
-</ul>
 
 [Markup]:     markup.html
 [Extraction]: extraction.html

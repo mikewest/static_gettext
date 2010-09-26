@@ -2,23 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{{ title }}</title>
+    <title>`static_gettext`: Page Not Found (404)</title>
 
     <link rel="stylesheet" type="text/css" href="./reset-fonts.css">
     <link rel="stylesheet" type="text/css" href="./core.css">
   </head>
-  <body {% if page.bodyclass %}class="{{ page.bodyclass }}"{% endif %}>
+  <body>
     <h1><a href="/" rel="home"><code>static_gettext</code></a><span class="offscreen">: </span>Localization for Static Documents</h1>
-    
-    {{ content }}
-    
+    <h2>Page Not Found (404)</h2>
+
+    <p>
+      Oh dear.  You seem to have been directed to a page that doesn't actually
+      exist.  Assuming you are indeed interested in `static_gettext`, I hope you
+      can find what you're looking for on one of these fine pages:
+    </p>
+
     <ul class="usage" role="navigation">
       <li><a href="./install.html">Installation</a></li>
       <li><a href="./markup.html">Marking translatable strings</a></li>
       <li><a href="./extraction.html">Message file generation</a></li>
       <li><a href="./build.html">Generating target-language localizations</a></li>
-      <li><a href="./cli.html">Command line usage</a></li>
     </ul>
-    <small>&copy;2010 <a href="http://mikewest.org/">Mike West</a>: Project source is <a href="http://github.com/mikewest/static_gettext/blob/master/LICENSE.markdown" rel="license">BSD licensed</a>, and <a href="http://github.com/mikewest/static_gettext">available on GitHub</a></small>
   </body>
 </html>
