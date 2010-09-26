@@ -35,8 +35,9 @@ via something like:
 
 Or clone the whole repository:
 
-git clone git://github.com/mikewest/static_gettext.git
+    git clone git://github.com/mikewest/static_gettext.git
 
 Enjoy!
 
+[gettext]:  http://www.gnu.org/software/gettext/
 [tarball]: http://github.com/mikewest/static_gettext/tarball/v0.9

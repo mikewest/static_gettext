@@ -40,8 +40,9 @@ h1 {
  *  Page Sections
  */
 h2 {
-  font: 25px/1.35 Baskerville, Times, 'Times New Roman', serif;
-  margin: 1em 0;
+  border-bottom:  1px solid #CCD;
+  font:           25px/1.35 Baskerville, Times, 'Times New Roman', serif;
+  margin:         0 0 0.5em;
 }
 
 /**
@@ -115,6 +116,7 @@ small {
     }
       .cta:hover, .cta:focus, .cta:active {
         background: #4183C4;
+        color:      #FFF;
       }
 
 /**

@@ -3,12 +3,6 @@ title:      "`static_gettext`: Localization for Static Documents"
 layout:     default
 bodyclass:  homepage
 ---
-
-<ul class="actions">
-  <li><a href="http://github.com/mikewest/static_gettext/tarball/v0.9" class="cta">Download current version (v0.9)</a></li> 
-  <li><a href="http://github.com/mikewest/static_gettext" class="cta">Source code on GitHub</a></li> 
-</ul>
-
 <img src="workflow.png" width="565" height="380" alt="static_gettext in a nutshell">
 
 `static_gettext` is an internationalization framework for static, plaintext
