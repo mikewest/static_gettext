@@ -31,3 +31,10 @@ your computer.  The easiest mechanism is simply to [download the current
 version][tarball], extract it, and move it into your project directory.
 
 [tarball]: http://github.com/mikewest/static_gettext/tarball/v0.9
+
+<ul class="usage" role="navigation">
+  <li><a href="./install.html">Installation</a></li>
+  <li><a href="./markup.html">Marking translatable strings</a></li>
+  <li><a href="./extraction.html">Message file generation</a></li>
+  <li><a href="./build.html">Generating target-language localizations</a></li>
+</ul>

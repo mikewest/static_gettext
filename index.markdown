@@ -20,8 +20,8 @@ localizations for your world-wide audience.
 
 [gettext]:  http://www.gnu.org/software/gettext/
 
-Basic Workflow
---------------
+Quickstart
+----------
 
 After [installing the script][install], getting up and running is trivial.
 Let's take a quick look at the [example project][example] to get our bearings:

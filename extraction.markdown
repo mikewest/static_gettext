@@ -85,9 +85,10 @@ message files is always a good idea, simply to ensure that the translation
 still makes sense.
 
 <ul class="usage" role="navigation">
-  <li>[Marking translatable strings][Markup]</li>
-  <li>[Message file generation][Extraction]</li>
-  <li>[Generating target-language localizations][Build]</li>
+  <li><a href="./install.html">Installation</a></li>
+  <li><a href="./markup.html">Marking translatable strings</a></li>
+  <li><a href="./extraction.html">Message file generation</a></li>
+  <li><a href="./build.html">Generating target-language localizations</a></li>
 </ul>
 
 [Markup]:     markup.html
