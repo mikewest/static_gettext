@@ -167,10 +167,10 @@ def main():
     parser = OptionParser()
     parser.add_option(  "-d", "--domain", dest="domain", default='messages', metavar='DOMAIN',
                         help="The localization's 'domain' (used to create the message file's name)" )
-    parser.add_option(  "-c", "--compile", dest="compile", default=False, action="store_true",
-                        help="Compile all `.po` files into `.mo` binaries." )
-    parser.add_option(  "-r", "--render", dest="render", default=False, action="store_true",
-                        help="Render all files in their respective languages." )
+    parser.add_option(  "-m", "--make-messages", dest="makemessages", default=False, action="store_true",
+                        help="Generate message files in target languages" )
+    parser.add_option(  "-b", "--build", dest="build", default=False, action="store_true",
+                        help="Build localizations in target languages" )
     parser.add_option(  "-l", "--locale", dest="localebase", default="./locale", metavar="DIR",
                         help="The directory where the .po/.mo files ought be located" )
     parser.add_option(  "-o", "--output", dest="outputbase", default="./build", metavar="DIR",
@@ -187,11 +187,9 @@ def main():
                         inputbase=options.inputbase, localebase=options.localebase,
                         languages=options.languages )
 
-    if options.compile:
+    if options.build:
         for locale in options.languages:
             l10n.compile( locale )
-    elif options.render:
-        for locale in options.languages:
             l10n.puttext( locale )
     else:
         for locale in options.languages:
