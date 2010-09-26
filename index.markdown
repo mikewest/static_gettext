@@ -35,15 +35,17 @@ Let's take a quick look at the [example project][example] to get our bearings:
     documents into _message files_ in standard `gettext` format.  A single
     message file containing all translation strings is generated for each
     target language as `locale/[TARGET]/LC_MESSAGES/messages.po` by running
-    `static_gettext.py --languages LANG_1,LANG_2,... --make-messages` in the
-    project root.
+    the following command from the project root:
+
+        static_gettext.py --languages LANG_1,LANG_2,... --make-messages
 
 *   **[Build][]**: After translation, the `*.po` files are updated with the
     localized strings and compiled into a `*.mo` binary format for quick
     lookup.  These binary files are then used to generate localized versions
-    of the project as `build/[TARGET]/*` by running
-    `static_gettext.py --languages LANG_1,LANG_2,... --build` in the project
-    root.
+    of the project as `build/[TARGET]/*` by running the following from the
+    project root:
+
+        static_gettext.py --languages LANG_1,LANG_2,... --build
 
 Detailed Usage
 --------------
