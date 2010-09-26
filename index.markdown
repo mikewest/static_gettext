@@ -34,12 +34,26 @@ Let's take a quick look at the [example project][example] to get our bearings:
 *   **[Extraction][]**: These translatable strings are extracted from the source
     documents into _message files_ in standard `gettext` format.  A single
     message file containing all translation strings is generated for each
-    target language as `locale/[TARGET]/LC_MESSAGES/messages.po`
+    target language as `locale/[TARGET]/LC_MESSAGES/messages.po` by running
+    `static_gettext.py --languages LANG_1,LANG_2,... --make-messages` in the
+    project root.
 
 *   **[Build][]**: After translation, the `*.po` files are updated with the
     localized strings and compiled into a `*.mo` binary format for quick
     lookup.  These binary files are then used to generate localized versions
-    of the project, placed into the `build/[TARGET]` directory.    
+    of the project as `build/[TARGET]/*` by running
+    `static_gettext.py --languages LANG_1,LANG_2,... --build` in the project
+    root.
+
+Detailed Usage
+--------------
+
+<ul class="usage" role="navigation">
+  <li><a href="./install.html">Installation</a></li>
+  <li><a href="./markup.html">Marking translatable strings</a></li>
+  <li><a href="./extraction.html">Message file generation</a></li>
+  <li><a href="./build.html">Generating target-language localizations</a></li>
+</ul>
 
 [Markup]:     markup.html
 [Extraction]: extraction.html

@@ -9,7 +9,7 @@ After [marking up your document set][Markup], use `static_gettext` to
 extract the marked strings into message files for the project's target
 languages:
 
-    static_gettext.py --languages en_US,de_DE
+    static_gettext.py --languages en_US,de_DE --make-messages
 
 This command generates `locale/en_US/LC_MESSAGES/messages.po` and
 `locale/de_DE/LC_MESSAGES/messages.po`, which, [in our example][example],
@@ -76,7 +76,7 @@ Updating source documents
 
 The framework is clever enough to do some fuzzy matching of previously
 translated strings when you update source documents.  Simply run
-`static_gettext.py --languages en_US,de_DE` again after making changes,
+`static_gettext.py --languages en_US,de_DE --make-messages` again after making changes,
 and the message files will be regenerated: new strings will be added,
 deleted strings will be commented out, unchanged strings will be retained
 as-is, and lightly modified strings will reuse the previous translation,
