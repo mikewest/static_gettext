@@ -17,7 +17,7 @@ class LocalizerGettextException( BaseException ):
 class Localizer( object ):
     GETTEXT = 0
     PUTTEXT = 1
-    TEMPLATE_EXTS   = [ '.html', '.js', '.css', '.xml', '.txt', '.markdown' ]
+    DEFAULT_EXTS   = [ '.html', '.js', '.css', '.xml', '.txt', '.markdown' ]
       
     ESCAPE_RE       = re.compile( r'(\')' )
     BLANKOUT_RE     = re.compile( r'\S' )
@@ -26,13 +26,17 @@ class Localizer( object ):
     MSGUNIQ_CMD     = u'msguniq --to-code=utf-8 "%s"'
     MSGMERGE_CMD    = u'msgmerge -q "%s" "%s"'
 
-    def __init__( self, domain, inputbase, localebase, outputbase, languages ):
+    def __init__( self, domain, inputbase, localebase, outputbase, languages, extensions=None ):
         self.dir        = dir
         self.domain     = domain
         self.inputbase  = inputbase
         self.localebase = localebase
         self.outputbase = outputbase
         self.languages  = languages
+        if extensions is None:
+            self.extensions = Localizer.DEFAULT_EXTS
+        else:
+            self.extensions = extensions
 
     def localedir( self, locale ):
         return os.path.join( self.localebase, locale, 'LC_MESSAGES' )
@@ -101,7 +105,7 @@ class Localizer( object ):
             os.makedirs( dir )
 
         basename, extension = os.path.splitext( file )
-        if extension in Localizer.TEMPLATE_EXTS:
+        if extension in self.extensions:
             src = self.templatize( file=file, type=Localizer.PUTTEXT, locale=locale, l10n=l10n )
             with open( outfile, 'wb' ) as f:
                 f.write( src.encode( 'utf-8' ) )
@@ -113,7 +117,7 @@ class Localizer( object ):
         for root, dirs, files in os.walk( self.inputbase ):
             for name in files:
                 basename, extension = os.path.splitext( name )
-                if extension in Localizer.TEMPLATE_EXTS:
+                if extension in self.extensions:
                     self.xgettext( os.path.join( root, name ), locale )
         self.xgettext_postprocessing( locale )
 
@@ -177,15 +181,20 @@ def main():
                         help="The directory into which translated files ought be rendered." )
     parser.add_option(  "-i", "--input", dest="inputbase", default="./src", metavar="DIR", 
                         help="The directory from which to read the translation templates." )
-    parser.add_option(  "--languages", dest="languages", default="en_US,de_DE", metavar="LANG1,LANG2,LANG3...",
-                        help="A comma seperated list of the languages in which translations should be made." )
+    parser.add_option(  "-e", "--extensions", dest="extensions", default=".html,.js,.css,.txt,.xml,.markdown", metavar=".EXT1,.EXT2,.EXT3,...",
+                        help="File extensions which ought to be parsed for translatable strings (Defaults to `.html,.js,.css,.txt,.xml,.markdown`)" )
+    parser.add_option(  "--languages", dest="languages", default="en_US,de_DE", metavar="LANG1,LANG2,LANG3,...",
+                        help="A comma seperated list of the languages in which translations should be made. (Defaults to `en_US,de_DE`)" )
 
     (options, args) = parser.parse_args()
     options.languages = options.languages.split( ',' )
+    options.extensions = options.extensions.split( ',' )
 
     l10n = Localizer(   domain=options.domain, outputbase=options.outputbase, 
                         inputbase=options.inputbase, localebase=options.localebase,
-                        languages=options.languages )
+                        languages=options.languages, extensions=options.extensions )
+
+    
 
     if options.build:
         for locale in options.languages:
