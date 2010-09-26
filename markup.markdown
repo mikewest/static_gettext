@@ -49,9 +49,15 @@ them, if you're willing to confuse yourself a bit:
 *   `/* blocktrans */TRANSLATABLE STRING/* /blocktrans */`
 
 <ul class="usage" role="navigation">
-  <li>[Marking translatable strings][Markup]</li>
-  <li>[Message file generation][Extraction]</li>
-  <li>[Generating target-language localizations][Build]</li>
+  <li>
+[Marking translatable strings][Markup]
+  </li>
+  <li>
+[Message file generation][Extraction]
+  </li>
+  <li>
+[Generating target-language localizations][Build]
+  </li>
 </ul>
 
 [Markup]:     markup.html
