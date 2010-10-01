@@ -138,16 +138,27 @@ class Localizer( object ):
         with codecs.open( file, 'rU', 'utf-8' ) as f:
             src     = f.read()
             newsrc  = []
-            blocks  = re.split( r'{% blocktrans %}|<blocktrans>|<!-- blocktrans -->|/\* blocktrans \*/', src )
-            
-            for block in blocks:
+            blocks  = re.split( r'{% blocktrans (?:with "((?:\\"|[^"])*)" as (\w+) )?%}|<blocktrans>|<!-- blocktrans -->|/\* blocktrans \*/', src )
+
+            ( value, key ) = ( None, None )
+            while len( blocks ) > 0:
+                block = blocks.pop(0)
+                if len(blocks) >= 2:
+                    ( nextValue, nextKey ) = ( blocks.pop(0), blocks.pop(0) )
+                else:
+                    ( nextValue, nextKey ) = ( None, None )
                 try:
                     ( pre, post ) = re.split( r'{% endblocktrans %}|</blocktrans>|<!-- /blocktrans -->|/\* /blocktrans \*/', block )
                     if type is Localizer.GETTEXT:
                         newsrc.append( u" gettext('%s') " % Localizer.ESCAPE_RE.sub( r'\\\1', pre ) )
                         newsrc.append( Localizer.BLANKOUT_RE.sub( u'X', post ) )
                     else:
-                        newsrc.append( self.translate( pre, l10n ) )
+                        if key is not None and value is not None:
+                            print "Key: %s, Value: %s, pre: %s, trans: %s" % ( key, value, pre, self.translate( pre, l10n ) )
+                            newsrc.append( self.translate( pre, l10n ).replace( "{{ %s }}" % key, value ) )
+                        else:
+                            newsrc.append( self.translate( pre, l10n ) )
+
                         newsrc.append( post )
                 except ValueError:  # No `post`
                     if type is Localizer.GETTEXT:
@@ -155,7 +166,11 @@ class Localizer( object ):
                     else:
                         newsrc.append( block )
 
+                ( value, key ) = ( nextValue, nextKey )
+
         return ''.join( newsrc )
+
+
 
     def translate( self, string, l10n ):
         return l10n.ugettext( string )
