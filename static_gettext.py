@@ -1,6 +1,21 @@
 #!/usr/bin/env python
 # encoding: utf-8;
 
+###########################################################################
+#
+#   static_gettext: Localization for static documents
+#   http://projects.mikewest.org/static_gettext/
+#   
+#   Version:    0.11
+#
+#   static_gettext is an internationalization framework for static,
+#   plaintext documents and templates. It’s geared towards straightforward
+#   translation of static websites, but can be easily used for any set of
+#   files you’d like to translate as a group.
+#
+#   (c)2010 Mike West, BSD licensed ( http://github.com/mikewest/static_gettext/blob/master/LICENSE.markdown )
+#
+
 from __future__ import with_statement
 
 import re, os, sys
@@ -107,6 +122,10 @@ class Localizer( object ):
         basename, extension = os.path.splitext( file )
         if extension in self.extensions:
             src = self.templatize( file=file, type=Localizer.PUTTEXT, locale=locale, l10n=l10n )
+
+            # Replace `{{ LANGUAGE_CODE }}` with a BCP47 language tag
+            src = src.replace( r'{{ LANGUAGE_CODE }}', locale.lower().replace( '_', '-' ) )
+
             with open( outfile, 'wb' ) as f:
                 f.write( src.encode( 'utf-8' ) )
         else:
