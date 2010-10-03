@@ -173,7 +173,6 @@ class Localizer( object ):
                         newsrc.append( Localizer.BLANKOUT_RE.sub( u'X', post ) )
                     else:
                         if key is not None and value is not None:
-                            print "Key: %s, Value: %s, pre: %s, trans: %s" % ( key, value, pre, self.translate( pre, l10n ) )
                             newsrc.append( self.translate( pre, l10n ).replace( "{{ %s }}" % key, value ) )
                         else:
                             newsrc.append( self.translate( pre, l10n ) )
